@@ -12,3 +12,4 @@ data/
 
 # Model checkpoints
 *.keras
+*.h5
