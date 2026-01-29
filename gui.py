@@ -1,4 +1,4 @@
-# vehicle_gui.py
+# Imports
 import numpy as np
 import tkinter as tk
 from tkinter import filedialog
@@ -8,9 +8,7 @@ from keras import layers
 from keras.models import load_model, Model
 from keras.applications import MobileNetV2
 
-# ----------------------------
-# CONFIG
-# ----------------------------
+# Settings
 IMAGE_SIZE_CNN = (128, 128)
 IMAGE_SIZE_MNET = (224, 224)
 
@@ -28,9 +26,7 @@ CUSTOM_CNN_PATH = "checkpoints_customCNN/save_at_25.keras"
 MOBILENET_WEIGHTS = "checkpoints_mnetv2/epoch-25.weights.h5"
 
 
-# ----------------------------
-# MODEL BUILDERS
-# ----------------------------
+# Model building functions
 def load_custom_cnn():
     print("Loading Custom CNN...")
     return load_model(CUSTOM_CNN_PATH)
@@ -57,16 +53,12 @@ def build_mobilenet():
     return model
 
 
-# ----------------------------
-# LOAD DEFAULT MODEL
-# ----------------------------
+# Model Loading
 # current_model_name = tk.StringVar(value="MobileNetV2")
 model = build_mobilenet()
 
 
-# ----------------------------
-# GUI LOGIC
-# ----------------------------
+# GUI
 def switch_model(*args):
     global model
     if current_model_name.get() == "Custom CNN":
@@ -99,7 +91,6 @@ def predict_image():
 
     preds = model.predict(img_array)[0]
 
-    # If Custom CNN → logits → softmax
     if current_model_name.get() == "Custom CNN":
         preds = tf.nn.softmax(preds).numpy()
 
@@ -113,9 +104,7 @@ def predict_image():
     result_label.config(text=text)
 
 
-# ----------------------------
-# GUI SETUP
-# ----------------------------
+# GUI Setup
 root = tk.Tk()
 root.title("Vehicle Classifier")
 
