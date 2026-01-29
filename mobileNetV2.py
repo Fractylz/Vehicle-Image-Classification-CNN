@@ -126,4 +126,10 @@ def predict_image(model, img_path):
 
 
 # --- 8️⃣ Example usage ---
+predict_image(model, "data/Auto Rickshaws/Auto Rickshaw (1).jpg")
+predict_image(model, "data/Bikes/Bikes (1).jpg")
 predict_image(model, "data/Cars/Car (1).jpg")
+predict_image(model, "data/Motorcycles/Motorcycles (1).jpg")
+predict_image(model, "data/Planes/Planes (1).jpg")
+predict_image(model, "data/Ships/Ships (1).jpg")
+predict_image(model, "data/Trains/Trains (1).jpg")
